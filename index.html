@@ -6,8 +6,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <title>DEBOOGER2000 | Visual Project Viewer & Inspector — B034</title>
-  <!-- DEBOOGER2000 build B034: paste box, bigger top bar, phone fill, one-click edit. Previous build B033 preserved. -->
+  <title>DEBOOGER2000 | Visual Project Viewer & Inspector — B035</title>
+  <!-- DEBOOGER2000 build B035: cleaner top bar, stacked score, white AI repair. Previous build B034 preserved. -->
   <!-- Bundled ZIP engine: JSZip 3.10.1 (MIT/GPLv3 dual licensed; upstream license notice retained below). -->
   <script data-vendor="jszip-3.10.1">
 /*!
@@ -11746,7 +11746,7 @@ module.exports = ZStream;
     .header-actions.has-project .project-only-action { display: inline-flex; }
     .workspace-header-controls { display: none; align-items: center; gap: 28px; min-width: 0; flex: 1 1 auto; margin-left: 8px; }
     body.workspace-view-active .workspace-header-controls { display: flex; }
-    .workspace-view-settings { display: flex; align-items: center; gap: 10px; padding-right: 24px; border-right: 1px solid var(--border-subtle); flex-shrink: 0; }
+    .workspace-view-settings { display: flex; align-items: center; gap: 8px; padding-right: 0; border-right: 0; flex-shrink: 0; }
     .workspace-extra-tools { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-shrink: 0; }
     .top-trash-emoji { font-size: 24px; line-height: 1; border: 0; background: transparent; padding: 6px 8px; cursor: pointer; filter: grayscale(1); opacity: 0.72; }
     .top-trash-emoji:hover { filter: none; opacity: 1; }
@@ -11761,7 +11761,7 @@ module.exports = ZStream;
     }
     .topbar-logo .logo-text { font-size: 14px; line-height: 1.1; font-weight: 800; }
     .topbar-logo .logo-sub { display: none; }
-    .project-header-info { min-width: 0; flex: 0 1 auto; }
+    .project-header-info { display: none !important; }
     .project-header-info:empty,
     .project-title:empty { display: none; }
     .page-file-select { height:30px; min-width:110px; max-width:180px; border:0; border-right:1px solid var(--border-subtle); background:#fff; color:var(--text-main); font-size:11px; font-weight:700; padding:0 6px; }
@@ -11796,7 +11796,7 @@ module.exports = ZStream;
     .design-swatch i { width:22px; height:22px; border:1px solid var(--border-subtle); flex:0 0 22px; }
     .correction-status { font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; }
     .top-trash-icon { width:16px; height:16px; }
-    .workspace-control-group { display: inline-flex; align-items: center; height: 42px; border: 1px solid var(--border-subtle); background: #ffffff; }
+    .workspace-control-group { display: inline-flex; align-items: center; height: 42px; border: 0; background: transparent; }
     .workspace-control-group + .workspace-control-group { margin-left: 1px; }
     .workspace-device-btn,
     .workspace-icon-btn,
@@ -11804,7 +11804,7 @@ module.exports = ZStream;
       height: 40px;
       min-width: 40px;
       border: 0;
-      border-right: 1px solid var(--border-subtle);
+      border-right: 0;
       background: transparent;
       color: var(--text-muted);
       padding: 0 8px;
@@ -11820,7 +11820,7 @@ module.exports = ZStream;
     }
     .workspace-control-group > :last-child { border-right: 0; }
     .workspace-device-btn:hover,.workspace-icon-btn:hover,.workspace-menu-btn:hover { background:#f8fafc; color:var(--text-main); }
-    .workspace-device-btn.active,.workspace-icon-btn.active,.workspace-menu-btn.active,.workspace-icon-btn.inspect-active { background:#0f172a; color:#fff; }
+    .workspace-device-btn.active,.workspace-icon-btn.active,.workspace-menu-btn.active,.workspace-icon-btn.inspect-active { background:#e8eef5; color:#0f172a; }
     .workspace-icon-btn svg,.workspace-menu-btn svg { width:20px; height:20px; }
     .workspace-zoom-value { display: none; }
     .workspace-page-tabs { display:flex; align-items:center; min-width:0; max-width:220px; overflow-x:auto; gap:2px; }
@@ -12006,22 +12006,18 @@ module.exports = ZStream;
       opacity: 1;
       pointer-events: auto;
     }
-    .results-score-wrap { display:none; align-items:center; gap:6px; }
-    body.has-project .results-score-wrap { display:inline-flex; }
+    .results-score-wrap { display: inline-flex; align-items: center; }
     .results-score-badge {
-      min-width: 26px; height: 22px; padding: 0 5px; border-radius: 4px;
-      display: inline-flex; align-items: center; justify-content: center;
-      font-size: 11px; font-weight: 800; letter-spacing: -0.02em;
-      background: #f1f5f9; color: #64748b;
+      display: none; position: absolute; left: 50%; bottom: 2px; transform: translateX(-50%);
+      min-width: 0; height: auto; padding: 0; border-radius: 0;
+      font-size: 9px; font-weight: 800; letter-spacing: -0.03em; line-height: 1;
+      background: transparent !important; color: #334155; pointer-events: none;
     }
-    .results-score-badge.score-good { background:#d1fae5; color:#047857; }
-    .results-score-badge.score-ok { background:#fef3c7; color:#b45309; }
-    .results-score-badge.score-bad { background:#fee2e2; color:#b91c1c; }
-    .results-error-badge, .results-cleanup-badge { display:none; min-width:16px; height:16px; padding:0 4px; border-radius:3px; font-size:9px; font-weight:800; align-items:center; justify-content:center; }
-    .results-error-badge { background:#fee2e2; color:#b91c1c; }
-    .results-error-badge.has-errors { display:inline-flex; }
-    .results-cleanup-badge { background:#ffedd5; color:#c2410c; }
-    .results-cleanup-badge.has-cleanup { display:inline-flex; }
+    body.has-project .results-score-badge { display: block; }
+    .results-error-badge, .results-cleanup-badge { display:none; min-width:0; height:auto; padding:0; border-radius:0; font-size:9px; font-weight:800; align-items:center; justify-content:center; }
+    .results-error-badge { background:transparent; color:#b91c1c; }
+    .results-error-badge.has-errors { display:block; }
+    .results-cleanup-badge { display:none !important; }
     .results-visual-badge { display:none; min-width:16px; height:16px; padding:0 4px; border-radius:3px; background:#dbeafe; color:#1d4ed8; font-size:9px; font-weight:800; align-items:center; justify-content:center; }
     .results-visual-badge.has-visual { display:inline-flex; }
     .upload-debug-box {
@@ -12093,7 +12089,7 @@ module.exports = ZStream;
     .project-kind { display: none !important; }
     .project-kind[hidden] { display: none !important; }
     .project-file-ext:empty { display: none; }
-    .top-nav { display: flex; align-items: center; gap: 12px; margin-left: 28px; margin-right: 28px; padding-right: 28px; border-right: 1px solid var(--border-subtle); flex-shrink: 0; }
+    .top-nav { display: flex; align-items: center; gap: 6px; margin-left: 16px; margin-right: 12px; padding-right: 0; border-right: 0; flex-shrink: 0; }
     .top-nav .workspace-icon-btn { border: 0; border-right: 0; height: 42px; min-width: 42px; padding: 0 8px !important; }
     header { padding: 0 12px; overflow: visible; }
     body.workspace-view-active .stage-container {
@@ -12120,16 +12116,15 @@ module.exports = ZStream;
       border-radius: 36px !important;
     }
     .workspace-icon-btn { position: relative; padding: 0 7px !important; }
-    .workspace-icon-btn .results-error-badge,
     .workspace-icon-btn .visual-issue-badge {
       position: absolute; top: 1px; right: 1px; min-width: 14px; height: 14px; padding: 0 3px;
     }
-    .workspace-icon-btn .results-cleanup-badge {
-      position: absolute; top: 1px; left: 1px; min-width: 14px; height: 14px; padding: 0 3px;
+    #btn-results-toolbar .results-error-badge {
+      position: absolute; top: 2px; left: 50%; transform: translateX(-50%);
+      background: transparent; color: #b91c1c; font-size: 9px; font-weight: 800; line-height: 1;
     }
-    .workspace-icon-btn .results-visual-badge {
-      position: absolute; bottom: 1px; right: 1px; min-width: 14px; height: 14px; padding: 0 3px;
-    }
+    .workspace-icon-btn .results-cleanup-badge,
+    .workspace-icon-btn .results-visual-badge { display: none !important; }
     .simple-swatch { display:flex; align-items:center; gap:10px; padding:7px 0; border-bottom:1px solid #f1f5f9; cursor:pointer; background:transparent; width:100%; text-align:left; border-left:0; border-right:0; border-top:0; font:inherit; }
     .simple-swatch i { width:22px; height:22px; border:1px solid var(--border-subtle); flex:0 0 22px; }
     .page-design-card { margin-bottom: 14px; }
@@ -12742,7 +12737,8 @@ module.exports = ZStream;
 
     body.ios-client #dropzone-folder-btn { display: none !important; }
     body.ios-client .dropzone-actions { grid-template-columns: 1fr 1fr; }
-    #paste-input-area {
+    #paste-input-area,
+    #ai-prompt-modal-text {
       background: #ffffff !important;
       color: #0f172a !important;
       border: 1px solid var(--border-subtle) !important;
@@ -13198,19 +13194,16 @@ module.exports = ZStream;
         <button type="button" class="workspace-icon-btn" id="btn-inspect-toolbar" onclick="toggleVisualInspectMode()" aria-pressed="false" title="Edit mode" aria-label="Edit mode"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg><span class="visual-issue-badge" id="visual-issue-badge">0</span></button>
         <button type="button" class="workspace-icon-btn" id="btn-files-toolbar" onclick="toggleWorkspaceDrawer('files')" aria-pressed="false" title="Files" aria-label="Files"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg></button>
         <div class="results-score-wrap">
-          <span class="results-score-badge" id="results-score-badge" title="Test score">—</span>
-          <button type="button" class="workspace-icon-btn" id="btn-results-toolbar" onclick="toggleWorkspaceDrawer('diagnostics')" aria-pressed="false" title="Diagnostics" aria-label="Diagnostics"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg><span class="results-cleanup-badge" id="results-cleanup-badge">0</span><span class="results-visual-badge" id="results-visual-badge">0</span><span class="results-error-badge" id="results-error-badge">0</span></button>
+          <button type="button" class="workspace-icon-btn" id="btn-results-toolbar" onclick="toggleWorkspaceDrawer('diagnostics')" aria-pressed="false" title="Diagnostics" aria-label="Diagnostics"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg><span class="results-error-badge" id="results-error-badge"></span><span class="results-score-badge" id="results-score-badge" title="Test score"></span></button>
         </div>
         <div class="workspace-menu-wrap">
           <button type="button" class="workspace-icon-btn" id="btn-ai-repair-menu" onclick="toggleWorkspacePopover('ai-repair-menu')" aria-expanded="false" title="Saved fixes" aria-label="Saved fixes"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></button>
           <div class="workspace-popover" id="ai-repair-menu" role="menu" aria-label="AI repair handoff">
-            <div class="workspace-popover-title">Repair handoff</div>
-            <button type="button" onclick="copyCurrentVisualCorrection()"><span>Copy Current Correction</span></button>
-            <button type="button" onclick="copyAllVisualCorrections()"><span>Copy All Corrections</span><span id="ai-repair-count">0</span></button>
-            <button type="button" onclick="openSavedCorrectionsOverlay()"><span>Open Saved Corrections</span></button>
-            <button type="button" onclick="exportRepairHandoff()"><span>Export Repair Handoff</span><span>ZIP</span></button>
-            <button type="button" onclick="clearCompletedCorrections()"><span>Clear Completed Corrections</span></button>
-            <button type="button" onclick="runOneClickRepair()"><span>Review Issues</span></button>
+            <div class="workspace-popover-title">Saved files</div>
+            <button type="button" onclick="copyCurrentVisualCorrection()"><span>Copy current</span></button>
+            <button type="button" onclick="copyAllVisualCorrections()"><span>Copy all</span><span id="ai-repair-count">0</span></button>
+            <button type="button" onclick="exportRepairHandoff()"><span>Download ZIP</span></button>
+            <button type="button" onclick="clearCompletedCorrections()"><span>Clear finished</span></button>
             <div class="workspace-popover-sep"></div>
             <div class="workspace-popover-title">Saved corrections</div>
             <div class="workspace-correction-list" id="workspace-correction-list"><div style="padding:7px 8px;font-size:10px;color:var(--text-muted);">No corrections saved.</div></div>
@@ -13814,9 +13807,12 @@ module.exports = ZStream;
     <div class="modal-box" style="max-width:720px;">
       <div class="modal-header"><span id="ai-modal-title">AI Repair</span></div>
       <div class="modal-body" style="padding:18px;display:flex;flex-direction:column;gap:12px;">
-        <p style="font-size:13px;color:var(--text-muted);margin:0;">Copy this note and paste it to another AI to fix the project. It only talks about real findings.</p>
-        <textarea id="ai-prompt-modal-text" readonly class="editor-textarea" style="height:320px;"></textarea>
-        <button class="btn btn-primary" onclick="copyAiHandoffPrompt()">Copy prompt</button>
+        <textarea id="ai-prompt-modal-text" readonly class="editor-textarea" style="height:min(70vh,560px);background:#ffffff;color:#0f172a;"></textarea>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn btn-primary" type="button" onclick="copyAiHandoffPrompt()">Copy prompt</button>
+          <button class="btn btn-outline" type="button" onclick="copyAuditReport()">Copy audit</button>
+          <button class="btn btn-dark" type="button" onclick="exportAuditReport()">Download audit</button>
+        </div>
       </div>
     </div>
   </div>
@@ -13829,7 +13825,7 @@ module.exports = ZStream;
           <select id="settings-default-preview" onchange="setDefaultPreview(this.value)"><option value="desktop">Desktop</option><option value="wide1200">1200</option><option value="mobile">Mobile</option></select>
         </div>
         <div style="font-size:12px;color:var(--text-muted);line-height:1.5;">
-          Build B034 is a standalone browser HTML app. It can preview HTML and React/Vite source in the browser, including public/ files, vite aliases, and common Vite imports. It still cannot run a real Vite server, npm install, or Electron main.
+          Build B035 is a standalone browser HTML app. It can preview HTML and React/Vite source in the browser, including public/ files, vite aliases, and common Vite imports. It still cannot run a real Vite server, npm install, or Electron main.
           Those actions need a separate desktop runtime that is not included in this build.
         </div>
       </div>
@@ -23242,11 +23238,9 @@ ${issues.length ? issues.map(visualIssueToPrompt).join('\n\n---\n\n') : 'No visu
         gauge.style.borderColor = !hasProject || score == null ? 'var(--border-subtle)' : score >= 90 ? '#059669' : score >= 70 ? '#d97706' : '#dc2626';
       }
       if (scoreBadge) {
-        scoreBadge.textContent = label;
-        scoreBadge.className = 'results-score-badge ' + (hasProject ? scoreTone(score) : '');
-        scoreBadge.title = score == null || !hasProject
-          ? 'Test score'
-          : `Test score ${score} — ${v.passed || 0} passed, ${v.errors || 0} failed`;
+        scoreBadge.textContent = hasProject && score != null ? String(score) : '';
+        scoreBadge.className = 'results-score-badge';
+        scoreBadge.title = hasProject && score != null ? ('Score ' + score) : 'Test score';
       }
       const navIssuesBadge = document.getElementById('nav-badge-issues');
       if (navIssuesBadge) {
@@ -25168,23 +25162,21 @@ ${issues.length ? issues.map(visualIssueToPrompt).join('\n\n---\n\n') : 'No visu
       setTimeout(() => URL.revokeObjectURL(url), 1200);
     }
 
-    function exportAuditReport() {
+    function buildAuditReportText() {
       const report = STATE.auditReport || { score: 0, findings: [], categories: {} };
       const lines = [
         'DEBOOGER2000 AUDIT REPORT',
-        `Project: ${STATE.projectName}`,
-        `Detected Type: ${String(STATE.projectType || 'unknown').toUpperCase()}`,
-        `Entry File: ${STATE.entryFile || 'none'}`,
-        `Health Score: ${report.score}/100`,
-        `Findings: ${report.findings.length}`,
+        'Project: ' + (STATE.projectName || ''),
+        'Detected Type: ' + String(STATE.projectType || 'unknown').toUpperCase(),
+        'Entry File: ' + (STATE.entryFile || 'none'),
+        'Health Score: ' + report.score + '/100',
+        'Findings: ' + report.findings.length,
         '',
         'CATEGORY COUNTS'
       ];
-
       Object.entries(report.categories || {}).forEach(([name, count]) => {
-        lines.push(`- ${name}: ${count}`);
+        lines.push('- ' + name + ': ' + count);
       });
-
       lines.push('', 'DETAILED FINDINGS');
       if (!report.findings.length) {
         lines.push('No findings in the latest audit.');
@@ -25192,19 +25184,28 @@ ${issues.length ? issues.map(visualIssueToPrompt).join('\n\n---\n\n') : 'No visu
         report.findings.forEach((finding, index) => {
           lines.push(
             '',
-            `${index + 1}. [${String(finding.severity || 'info').toUpperCase()}] ${finding.title || 'Finding'}`,
-            `   Category: ${finding.category || 'General'}`,
-            `   File: ${finding.file || 'General'}`,
-            `   Evidence: ${finding.evidence || 'None'}`,
-            `   Recommended Fix: ${finding.fix || 'Review manually'}`
+            (index + 1) + '. [' + String(finding.severity || 'info').toUpperCase() + '] ' + (finding.title || 'Finding'),
+            '   Category: ' + (finding.category || 'General'),
+            '   File: ' + (finding.file || 'General'),
+            '   Evidence: ' + (finding.evidence || 'None'),
+            '   Recommended Fix: ' + (finding.fix || 'Review manually')
           );
         });
       }
+      return lines.join('\n');
+    }
 
-      const output = lines.join('\n');
+    function exportAuditReport() {
+      if (!Object.keys(STATE.files || {}).length) { showToast('Load a project first.'); return; }
+      const output = buildAuditReportText();
       const safeName = (STATE.projectName || 'project').replace(/[\\/:*?"<>|]+/g, '-');
-      downloadBlob(new Blob([output], { type: 'text/plain' }), `${safeName}-audit-report.txt`);
-      showToast('Audit report exported.');
+      downloadBlob(new Blob([output], { type: 'text/plain' }), safeName + '-audit-report.txt');
+      showToast('Audit downloaded.');
+    }
+
+    async function copyAuditReport() {
+      if (!Object.keys(STATE.files || {}).length) { showToast('Load a project first.'); return; }
+      await copyTextForAi(buildAuditReportText(), 'Audit copied.');
     }
 
     // AI Handoff Prompt Generator
